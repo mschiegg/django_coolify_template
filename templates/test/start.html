@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        <link href="{% static "/test/style.css" %}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Halli-Hallo!</h2>
+        <p>Static funktioniert, wenn die Überschrift Blau ist</p>
+        <p>Media funktioniert, wenn du hier ein Bild siehst</p>
+        <img src="media/test.png" alt="Media Test Bild" title="Media Test Bild" />
+        <p>Debug ist {% if DEBUG %}AN{% else %}AUS{% endif %} </p>
+    </body>
+</html>
