@@ -42,11 +42,6 @@ services:
             listen 80;
             server_name _;
 
-            # Redirect nur für echte HTTP-Requests (kommt von Traefik)
-            if ($http_x_forwarded_proto = "http") {
-              return 301 https://$host$request_uri;
-            }
-
             location /static/ { alias /static/; expires 30d; access_log off; }
             location /media/  { alias /media/;  expires 7d;  access_log off; }
 
