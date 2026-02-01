@@ -40,24 +40,20 @@ services:
         content: |
           server {
             listen 80;
+            return 301 https://$host$request_uri;
+          }
 
-            location /static/ {
-              alias /static/;
-              access_log off;
-              expires 30d;
-              add_header Cache-Control "public, max-age=2592000, immutable";
-            }
+          server {
+            listen 80;
+            server_name _;
 
-            location /media/ {
-              alias /media/;
-              access_log off;
-              expires 7d;
-            }
+            location /static/ { alias /static/; expires 30d; access_log off; }
+            location /media/  { alias /media/;  expires 7d;  access_log off; }
 
             location / {
               proxy_pass http://django:8000;
               proxy_set_header Host $host;
-              proxy_set_header X-Forwarded-Proto $scheme;
+              proxy_set_header X-Forwarded-Proto https;
               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             }
           }
