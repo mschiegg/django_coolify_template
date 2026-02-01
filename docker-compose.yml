@@ -10,10 +10,11 @@ services:
 
   django:
     build:
-      context: ./core
+      context: .
+      dockerfile: Dockerfile
     environment:
       SECRET_KEY: ${SECRET_KEY}
-      DEBUG: "0"
+      DEBUG: ${DEBUG}
       DOMAIN: ${DOMAIN}
       DATABASE_URL: postgresql://app:${POSTGRES_PASSWORD}@db:5432/app
     depends_on:
