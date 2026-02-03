@@ -1,5 +1,5 @@
 asgiref==3.11.0
-django==6.0.1
+django==6.0.2
 gunicorn==25.0.0
 packaging==26.0
 psycopg2-binary==2.9.11
